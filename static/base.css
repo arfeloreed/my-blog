@@ -1,0 +1,17 @@
+body {
+  background-color: #e7e7e7;
+}
+
+#nav-menu {
+  width: 200px;
+}
+
+.form-wrapper {
+  height: 90vh;
+}
+
+.form-box {
+  width: 450px;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.4);
+}

@@ -1,0 +1,11 @@
+#about-intro {
+  height: 30rem;
+  background-image: url("images/about-bg.jpg");
+  background-size: cover;
+}
+
+#about-me-con {
+  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.4);
+  max-width: 60rem;
+  text-align: justify;
+}

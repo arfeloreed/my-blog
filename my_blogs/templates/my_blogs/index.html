@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}Arfelo Reed{% endblock page_title %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static "my_blogs/index.css" %}">
+  <link rel="stylesheet" href="{% static "my_blogs/post-template.css" %}">
+  <link rel="stylesheet" href="{% static "my_blogs/footer.css" %}">
+{% endblock css %}
+
+{% block active1 %}active{% endblock active1 %}
+
+{% block content %}
+{% if messages %}
+  {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+      <p id="message-timer" class="alert alert-success text-center">{{message}}</p>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+  <main>
+    {% comment %} welcome section {% endcomment %}
+    <section id="welcome">
+      <div class="container-lg text-white">
+        <div id="my-profile" class="d-flex align-items-start">
+          <img src="{% static "my_blogs/images/profile2.jpg" %}" alt="Arfelo Reed's image">
+          <h1 class="fw-semibold">Reed's Blog</h1>
+        </div>
+        <h2>Hi, I'm Arfelo Reed. Welcome, this is a collection of some of my random thoughts and musings.</h2>
+      </div>
+    </section>
+
+    {% comment %} latest posts section {% endcomment %}
+    <section class="p-3 p-lg-0 mb-5">
+      <div id="latest-posts" class="container-lg">
+        <h3 class="text-center">My Recent Thoughts</h3>
+
+        <ul class="d-flex flex-column flex-lg-row">
+          {% for post in posts %}
+            {% include "my_blogs/includes/post-template.html" %}
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  {% comment %} footer section {% endcomment %}
+  <footer class="text-bg-primary">
+    {% include "my_blogs/includes/footer.html" %}
+  </footer>
+{% endblock content %}

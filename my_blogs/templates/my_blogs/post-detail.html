@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}{{post.author.first_name}}'s Post{% endblock page_title %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static "my_blogs/footer.css" %}">
+  <link rel="stylesheet" href="{% static "my_blogs/post-detail.css" %}">
+{% endblock css %}
+
+{% block content %}
+  <main>
+    {% comment %} post content intro section {% endcomment %}
+    <section>
+      <div id="post-intro" class="container-lg mt-5 text-white">
+        <img id="intro-img" src="{{post.image.url}}" alt="{{post.title}}-image">
+        <div class="position-absolute intro-con d-flex flex-column flex-lg-row">
+          <div>
+            <h1 class="mb-4 display-4 px-3 rounded-2">{{post.title}}</h1>
+            {% for tag in tags %}
+              <span class="tags">{{tag.caption}}</span>
+            {% endfor %}
+          </div>
+
+          <article class="mt-4">
+            <img src="{% static "my_blogs/images/profile2.jpg" %}" alt="">
+            <address class="fw-bold">By {{post.author}}</address>
+            <div>
+              <p>last updated on <time class="fw-bold">{{post.date|date:"d M Y"}}</time></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    {% comment %} post content section {% endcomment %}
+    <section class="px-2">
+      <div id="post-content" class="container-lg lead">
+        {{post.content|linebreaks}}
+      </div>
+    </section>
+
+    {% comment %} comments section {% endcomment %}
+    {% if comments %}
+    <section class="px-2">
+      <div id="comments" class="container-lg bg-white rounded-3 p-5 mb-5">
+        <h2 class="mb-5 text-center">Comments</h2>
+        <hr>
+        <ul>
+          {% for comment in comments %}
+            <li class="mb-4">
+              <h3>{{comment.user|title}}</h3>
+              <p>{{comment.comment|linebreaks}}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+    {% endif %}
+
+    {% comment %} comment form section {% endcomment %}
+    {% if user.is_authenticated %}
+    <section class="px-2">
+      <div id="comment-form" class="container-md my-5 p-4">
+        <form action="{% url "post-detail" post.slug %}" method="POST">
+          {% csrf_token %}
+          {% for field in form %}
+            <div id="form-fields" class="d-flex flex-column">
+              {{field.label_tag}}
+              {{field}}
+            </div>
+          {% endfor %}
+          <button class="btn btn-primary px-5 py-2 text-uppercase fw-semibold mt-3" type="submit">Post</button>
+        </form>
+      </div>
+    </section>
+    {% endif %}
+  </main>
+
+  {% comment %} footer section {% endcomment %}
+  <footer class="text-bg-primary">
+    {% include "my_blogs/includes/footer.html" %}
+  </footer>
+{% endblock content %}

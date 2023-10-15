@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}All Posts{% endblock page_title %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static "my_blogs/post-template.css" %}">
+  <link rel="stylesheet" href="{% static "my_blogs/footer.css" %}">
+  <link rel="stylesheet" href="{% static "my_blogs/all-posts.css" %}">
+{% endblock css %}
+
+{% block active2 %}active{% endblock active2 %}
+
+{% block content %}
+  <main>
+    <section id="all-posts-intro" class="d-flex align-items-center justify-content-center">
+      <h1 class="mb-5 display-3 fw-semibold">All Posts</h1>
+    </section>
+
+    <section id="all-posts" class="">
+      <ul class="p-4">
+        {% for post in posts %}
+          {% include "my_blogs/includes/post-template.html" %}
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
+
+  {% comment %} footer section {% endcomment %}
+  <footer class="text-bg-primary">
+    {% include "my_blogs/includes/footer.html" %}
+  </footer>
+{% endblock content %}

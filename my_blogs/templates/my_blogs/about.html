@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_title %}About me{% endblock page_title %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static "my_blogs/footer.css" %}">
+  <link rel="stylesheet" href="{% static "my_blogs/about.css" %}">
+{% endblock css %}
+
+{% block active3 %}active{% endblock active3 %}
+
+{% block content %}
+<main>
+  <section id="about-intro" class="d-flex align-items-center justify-content-center">
+    <h1 class="text-white display-4 fw-semibold">About Me</h1>
+  </section>
+
+  <section class="px-2">
+    <div class="container-lg my-5 p-3 rounded-3 lead bg-white" id="about-me-con">
+      <p>I'm Reed, a Python and Web Developer, a former Marine Engineer, with a passion
+        for crafting dynamic and user friendly web applications. With a background in a
+        variety of programming languages and technologies, I bring a unique perspective
+        and set of skills to each project I work on.
+      </p>
+      <p>
+        In my free time, I'm an avid reader and enjoy losing myself in a good book. I also
+        have a passion for baking and love experimenting with new recipes in the kitchen. These
+        hobbies have given me a well rounded perspective and help me approach each challenge with
+        a creative and problem solving mindset. Whether working on a project or whipping up a batch
+        of cookies, I'm always striving to bring my best effort and attention to detail.
+      </p>
+      <p>
+        I started this blog as a platform to share my thoughts and insights on various topics that 
+        interest me such as technology, AI, trends, the economy, politics, cooking and recreation.
+        Through my work as a developer and hobbies as a reader and baker, I've come to appreciate
+        the importance of staying informed and engaged with the world around me. With this blog, I 
+        hope to contribute to the larger conversation and inspire others to think critically about 
+        the issues that affect us all.
+      </p>
+    </div>
+  </section>
+</main>
+
+{% comment %} footer section {% endcomment %}
+<footer class="text-bg-primary">
+  {% include "my_blogs/includes/footer.html" %}
+</footer>
+{% endblock content %}
