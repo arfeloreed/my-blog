@@ -27,10 +27,11 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
-ALLOWED_HOSTS = ["arfeloreed.pythonanywhere.com"]
+# ALLOWED_HOSTS = ["arfeloreed.pythonanywhere.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -85,24 +86,24 @@ WSGI_APPLICATION = "blog.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-
-# mysql database setup for pythonanywhere
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "arfeloreed$my-blog",
-        "USER": "arfeloreed",
-        "PASSWORD": os.getenv("MYSQL_PASSWORD"),
-        "HOST": "arfeloreed.mysql.pythonanywhere-services.com",
-        "PORT": "3306",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+# mysql database setup for pythonanywhere
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "arfeloreed$my-blog",
+#         "USER": "arfeloreed",
+#         "PASSWORD": os.getenv("MYSQL_PASSWORD"),
+#         "HOST": "arfeloreed.mysql.pythonanywhere-services.com",
+#         "PORT": "3306",
+#     }
+# }
 
 
 # Password validation
