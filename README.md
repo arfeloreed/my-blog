@@ -5,3 +5,7 @@ A personal blog web app I created with django to share my thoughts on different 
 
 ## _Feautres_
 By utilizing the auth module of django, the web app could register and store information for a user(username and password). With this, if a user is authorized, they can post a comment on each post.
+
+_The site is now up and running visit site_ 
+
+@[arfeloreed.pythonanywhere.com](https://arfeloreed.pythonanywhere.com/)
